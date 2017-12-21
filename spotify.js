@@ -28,7 +28,7 @@ let artist;
 
 const getArtist = function (name) {
     // Edit me!
-    // (Plan to call `getFromApi()` several times over the whole exercise from here!)
+    // (Plan to call `getFromApi()` several times over the whole exercise from here!) 
 };
 
 

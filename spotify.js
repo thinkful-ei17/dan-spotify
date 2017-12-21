@@ -21,18 +21,23 @@ const getFromApi = function (endpoint, query = {}) {
             return Promise.reject(response.statusText);
         }
         return response.json();
+        
     });
 };
-console.log(getFromApi);
+
 let artist;
 
 const getArtist = function (name) {
     return getFromApi('search', {
         q: name,
         limit: 1,
-        type: 'artist'
-    });
-    .then()
+        type: 'buhd'
+    })
+        .then(data => {
+            artist = data.artists.items[0];
+            return artist;
+        })
+        .catch(error => console.log(error));
 };
 
 

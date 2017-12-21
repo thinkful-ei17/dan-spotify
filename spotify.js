@@ -23,12 +23,16 @@ const getFromApi = function (endpoint, query = {}) {
         return response.json();
     });
 };
-
+console.log(getFromApi);
 let artist;
 
 const getArtist = function (name) {
-    // Edit me!
-    // (Plan to call `getFromApi()` several times over the whole exercise from here!) 
+    return getFromApi('search', {
+        q: name,
+        limit: 1,
+        type: 'artist'
+    });
+    .then()
 };
 
 

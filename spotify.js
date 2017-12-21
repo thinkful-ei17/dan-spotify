@@ -31,12 +31,19 @@ const getArtist = function (name) {
     return getFromApi('search', {
         q: name,
         limit: 1,
-        type: 'buhd'
+        type: 'artist'
     })
         .then(data => {
             artist = data.artists.items[0];
-            return artist;
+            return getFromApi(`artists/${artist.id}/related-artists`);
         })
+        .then(item => {
+            artist.related = item.artists;
+            return artist;
+        
+        })
+   
+
         .catch(error => console.log(error));
 };
 

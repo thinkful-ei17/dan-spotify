@@ -39,9 +39,17 @@ const getArtist = function (name) {
         })
         .then(item => {
             artist.related = item.artists;
-            return artist;
+            let promises = [];
+            for (let i=0; i < artist.related.length; i++) {
+                promises.push(getFromApi(`artists/${artist.related[i].id}/top-tracks`, { country: 'US' }));
+                return artist; 
+            } 
+            return Promise.all(promises);
+            
+
+        })    
         
-        })
+        
    
 
         .catch(error => console.log(error));
